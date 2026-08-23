@@ -1,0 +1,6 @@
+{
+  "_howto": "Add entries below. type: video | image | code. Put files in assets/work/<section>/. For video give src (mp4/webm) and poster (jpg/png). For code give lang + code (use \\n for line breaks).",
+  "vfx": [],
+  "models": [],
+  "scripting": []
+}

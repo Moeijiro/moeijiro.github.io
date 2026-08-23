@@ -1,0 +1,12 @@
+# Портфоліо: сторінки індексувати можна, картинки й дані — ні.
+User-agent: *
+Allow: /$
+Allow: /index.html
+Allow: /icons.html
+Allow: /sounds.html
+Allow: /vfx.html
+Allow: /models.html
+Allow: /scripting.html
+Disallow: /assets/
+Disallow: /data/
+Disallow: /js/

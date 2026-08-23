@@ -1,0 +1,650 @@
+{
+ "categories": [
+  {
+   "id": "core",
+   "title": "Core UI & Navigation",
+   "sub": "HUD, menus and station buttons",
+   "count": 19
+  },
+  {
+   "id": "slots",
+   "title": "Equipment Slots",
+   "sub": "Nine equipment slots",
+   "count": 9
+  },
+  {
+   "id": "elements",
+   "title": "Elements",
+   "sub": "Twelve elements of the ability system",
+   "count": 12
+  },
+  {
+   "id": "runes",
+   "title": "Runes",
+   "sub": "Runes for weapon infusion",
+   "count": 8
+  },
+  {
+   "id": "components",
+   "title": "Ability Components",
+   "sub": "Ability behaviour types",
+   "count": 6
+  },
+  {
+   "id": "perks",
+   "title": "Perks",
+   "sub": "Passive character perks",
+   "count": 11
+  },
+  {
+   "id": "traits",
+   "title": "Traits",
+   "sub": "Armour awakening traits",
+   "count": 14
+  },
+  {
+   "id": "crafting",
+   "title": "Crafting & Relics",
+   "sub": "Catalysts, solvents and relics",
+   "count": 6
+  }
+ ],
+ "icons": [
+  {
+   "id": "ArcaneRerolls",
+   "name": "Arcane Rerolls",
+   "cat": "core",
+   "color": "#7C39D2",
+   "flat": true
+  },
+  {
+   "id": "Close",
+   "name": "Close",
+   "cat": "core",
+   "color": "#FF5D4A",
+   "flat": true
+  },
+  {
+   "id": "Coins",
+   "name": "Coins",
+   "cat": "core",
+   "color": "#FFBE38",
+   "flat": true
+  },
+  {
+   "id": "Damage",
+   "name": "Damage",
+   "cat": "core",
+   "color": "#FF634C",
+   "flat": true
+  },
+  {
+   "id": "Dungeons",
+   "name": "Dungeons",
+   "cat": "core",
+   "color": "#FF486C",
+   "flat": true
+  },
+  {
+   "id": "Forge",
+   "name": "Forge",
+   "cat": "core",
+   "color": "#FF933D",
+   "flat": true
+  },
+  {
+   "id": "Inventory",
+   "name": "Inventory",
+   "cat": "core",
+   "color": "#DD8322",
+   "flat": true
+  },
+  {
+   "id": "Leaderboard",
+   "name": "Leaderboard",
+   "cat": "core",
+   "color": "#FFCC4E",
+   "flat": true
+  },
+  {
+   "id": "Level",
+   "name": "Level",
+   "cat": "core",
+   "color": "#4BCFFF",
+   "flat": true
+  },
+  {
+   "id": "Locked",
+   "name": "Locked",
+   "cat": "core",
+   "color": "#4F55B0",
+   "flat": true
+  },
+  {
+   "id": "Monument",
+   "name": "Monument",
+   "cat": "core",
+   "color": "#655EF3",
+   "flat": true
+  },
+  {
+   "id": "Quests",
+   "name": "Quests",
+   "cat": "core",
+   "color": "#25DA61",
+   "flat": true
+  },
+  {
+   "id": "Settings",
+   "name": "Settings",
+   "cat": "core",
+   "color": "#8FA0C2",
+   "flat": true
+  },
+  {
+   "id": "Shop",
+   "name": "Shop",
+   "cat": "core",
+   "color": "#34DEDE",
+   "flat": true
+  },
+  {
+   "id": "Stats",
+   "name": "Stats",
+   "cat": "core",
+   "color": "#FF52A9",
+   "flat": true
+  },
+  {
+   "id": "Teleports",
+   "name": "Teleports",
+   "cat": "core",
+   "color": "#5299FF",
+   "flat": true
+  },
+  {
+   "id": "TrainingGround",
+   "name": "Training Ground",
+   "cat": "core",
+   "color": "#FFD052",
+   "flat": true
+  },
+  {
+   "id": "Upgrades",
+   "name": "Upgrades",
+   "cat": "core",
+   "color": "#6B52FF",
+   "flat": true
+  },
+  {
+   "id": "WorldTree",
+   "name": "World Tree",
+   "cat": "core",
+   "color": "#5BD76E",
+   "flat": true
+  },
+  {
+   "id": "SlotBelt",
+   "name": "Belt",
+   "cat": "slots",
+   "color": "#8189D0",
+   "flat": true
+  },
+  {
+   "id": "SlotBoots",
+   "name": "Boots",
+   "cat": "slots",
+   "color": "#8189D0",
+   "flat": true
+  },
+  {
+   "id": "SlotCape",
+   "name": "Cape",
+   "cat": "slots",
+   "color": "#8188D0",
+   "flat": true
+  },
+  {
+   "id": "SlotChest",
+   "name": "Chest",
+   "cat": "slots",
+   "color": "#818AD0",
+   "flat": true
+  },
+  {
+   "id": "SlotHelmet",
+   "name": "Helmet",
+   "cat": "slots",
+   "color": "#8188D0",
+   "flat": true
+  },
+  {
+   "id": "SlotLegs",
+   "name": "Legs",
+   "cat": "slots",
+   "color": "#8289CF",
+   "flat": true
+  },
+  {
+   "id": "SlotMask",
+   "name": "Mask",
+   "cat": "slots",
+   "color": "#8189D0",
+   "flat": true
+  },
+  {
+   "id": "SlotRing",
+   "name": "Ring",
+   "cat": "slots",
+   "color": "#8189D0",
+   "flat": true
+  },
+  {
+   "id": "SlotWeapon",
+   "name": "Weapon",
+   "cat": "slots",
+   "color": "#8189D0",
+   "flat": true
+  },
+  {
+   "id": "ElementBlood",
+   "name": "Blood",
+   "cat": "elements",
+   "color": "#E7183F",
+   "flat": true
+  },
+  {
+   "id": "ElementCrystal",
+   "name": "Crystal",
+   "cat": "elements",
+   "color": "#D455FC",
+   "flat": true
+  },
+  {
+   "id": "ElementEarth",
+   "name": "Earth",
+   "cat": "elements",
+   "color": "#C07E3F",
+   "flat": true
+  },
+  {
+   "id": "ElementFire",
+   "name": "Fire",
+   "cat": "elements",
+   "color": "#FF8352",
+   "flat": true
+  },
+  {
+   "id": "ElementIce",
+   "name": "Ice",
+   "cat": "elements",
+   "color": "#52D1FF",
+   "flat": true
+  },
+  {
+   "id": "ElementLightning",
+   "name": "Lightning",
+   "cat": "elements",
+   "color": "#FFE052",
+   "flat": true
+  },
+  {
+   "id": "ElementNature",
+   "name": "Nature",
+   "cat": "elements",
+   "color": "#7CD582",
+   "flat": true
+  },
+  {
+   "id": "ElementPoison",
+   "name": "Poison",
+   "cat": "elements",
+   "color": "#8BED64",
+   "flat": true
+  },
+  {
+   "id": "ElementSolar",
+   "name": "Solar",
+   "cat": "elements",
+   "color": "#FFC652",
+   "flat": true
+  },
+  {
+   "id": "ElementVoid",
+   "name": "Void",
+   "cat": "elements",
+   "color": "#9F77D9",
+   "flat": true
+  },
+  {
+   "id": "ElementWater",
+   "name": "Water",
+   "cat": "elements",
+   "color": "#58ACF9",
+   "flat": true
+  },
+  {
+   "id": "ElementWind",
+   "name": "Wind",
+   "cat": "elements",
+   "color": "#65ECD3",
+   "flat": true
+  },
+  {
+   "id": "RuneBlood",
+   "name": "Blood",
+   "cat": "runes",
+   "color": "#D46575",
+   "flat": true
+  },
+  {
+   "id": "RuneCrystal",
+   "name": "Crystal",
+   "cat": "runes",
+   "color": "#D455FC",
+   "flat": true
+  },
+  {
+   "id": "RuneEmber",
+   "name": "Ember",
+   "cat": "runes",
+   "color": "#FF8552",
+   "flat": true
+  },
+  {
+   "id": "RuneFrost",
+   "name": "Frost",
+   "cat": "runes",
+   "color": "#52D1FF",
+   "flat": true
+  },
+  {
+   "id": "RuneVenom",
+   "name": "Venom",
+   "cat": "runes",
+   "color": "#8CED63",
+   "flat": true
+  },
+  {
+   "id": "RuneVoid",
+   "name": "Void",
+   "cat": "runes",
+   "color": "#9F77D9",
+   "flat": true
+  },
+  {
+   "id": "RuneVolt",
+   "name": "Volt",
+   "cat": "runes",
+   "color": "#FFE052",
+   "flat": true
+  },
+  {
+   "id": "RuneWind",
+   "name": "Wind",
+   "cat": "runes",
+   "color": "#63EED2",
+   "flat": true
+  },
+  {
+   "id": "CompBeam",
+   "name": "Beam",
+   "cat": "components",
+   "color": "#4F4FB0",
+   "flat": true
+  },
+  {
+   "id": "CompExplosion",
+   "name": "Explosion",
+   "cat": "components",
+   "color": "#FFCE52",
+   "flat": true
+  },
+  {
+   "id": "CompHoming",
+   "name": "Homing",
+   "cat": "components",
+   "color": "#9F67E9",
+   "flat": true
+  },
+  {
+   "id": "CompMultiShot",
+   "name": "Multi Shot",
+   "cat": "components",
+   "color": "#FF9B52",
+   "flat": true
+  },
+  {
+   "id": "CompPiercing",
+   "name": "Piercing",
+   "cat": "components",
+   "color": "#7DD4B9",
+   "flat": true
+  },
+  {
+   "id": "CompProjectile",
+   "name": "Projectile",
+   "cat": "components",
+   "color": "#514FB0",
+   "flat": true
+  },
+  {
+   "id": "PerkAwaken",
+   "name": "Awaken",
+   "cat": "perks",
+   "color": "#6952FF",
+   "flat": true
+  },
+  {
+   "id": "PerkFortune",
+   "name": "Fortune",
+   "cat": "perks",
+   "color": "#FFBE39",
+   "flat": true
+  },
+  {
+   "id": "PerkInsight",
+   "name": "Insight",
+   "cat": "perks",
+   "color": "#DD318A",
+   "flat": true
+  },
+  {
+   "id": "PerkMight",
+   "name": "Might",
+   "cat": "perks",
+   "color": "#FF953E",
+   "flat": true
+  },
+  {
+   "id": "PerkReservoir",
+   "name": "Reservoir",
+   "cat": "perks",
+   "color": "#4ACFFF",
+   "flat": true
+  },
+  {
+   "id": "PerkSorcery",
+   "name": "Sorcery",
+   "cat": "perks",
+   "color": "#B252FF",
+   "flat": true
+  },
+  {
+   "id": "PerkThrift",
+   "name": "Thrift",
+   "cat": "perks",
+   "color": "#A05EF3",
+   "flat": true
+  },
+  {
+   "id": "PerkVigour",
+   "name": "Vigour",
+   "cat": "perks",
+   "color": "#4BD66F",
+   "flat": true
+  },
+  {
+   "id": "PerkVitality",
+   "name": "Vitality",
+   "cat": "perks",
+   "color": "#FF654D",
+   "flat": true
+  },
+  {
+   "id": "PerkWard",
+   "name": "Ward",
+   "cat": "perks",
+   "color": "#4A4FB5",
+   "flat": true
+  },
+  {
+   "id": "PerkWayfarer",
+   "name": "Wayfarer",
+   "cat": "perks",
+   "color": "#5299FF",
+   "flat": true
+  },
+  {
+   "id": "TraitArcaneFlow",
+   "name": "Arcane Flow",
+   "cat": "traits",
+   "color": "#FFC652",
+   "flat": true
+  },
+  {
+   "id": "TraitArmored",
+   "name": "Armored",
+   "cat": "traits",
+   "color": "#899CC8",
+   "flat": true
+  },
+  {
+   "id": "TraitBloodbound",
+   "name": "Bloodbound",
+   "cat": "traits",
+   "color": "#B252FF",
+   "flat": true
+  },
+  {
+   "id": "TraitBrutal",
+   "name": "Brutal",
+   "cat": "traits",
+   "color": "#52A3FF",
+   "flat": true
+  },
+  {
+   "id": "TraitConqueror",
+   "name": "Conqueror",
+   "cat": "traits",
+   "color": "#FFC652",
+   "flat": true
+  },
+  {
+   "id": "TraitElementalCore",
+   "name": "Elemental Core",
+   "cat": "traits",
+   "color": "#52A3FF",
+   "flat": true
+  },
+  {
+   "id": "TraitExecutioner",
+   "name": "Executioner",
+   "cat": "traits",
+   "color": "#B252FF",
+   "flat": true
+  },
+  {
+   "id": "TraitFortified",
+   "name": "Fortified",
+   "cat": "traits",
+   "color": "#899CC8",
+   "flat": true
+  },
+  {
+   "id": "TraitOvercharged",
+   "name": "Overcharged",
+   "cat": "traits",
+   "color": "#B252FF",
+   "flat": true
+  },
+  {
+   "id": "TraitPrecision",
+   "name": "Precision",
+   "cat": "traits",
+   "color": "#52A3FF",
+   "flat": true
+  },
+  {
+   "id": "TraitResilient",
+   "name": "Resilient",
+   "cat": "traits",
+   "color": "#52A3FF",
+   "flat": true
+  },
+  {
+   "id": "TraitSwiftstep",
+   "name": "Swiftstep",
+   "cat": "traits",
+   "color": "#899CC8",
+   "flat": true
+  },
+  {
+   "id": "TraitUnbreakable",
+   "name": "Unbreakable",
+   "cat": "traits",
+   "color": "#FFC652",
+   "flat": true
+  },
+  {
+   "id": "TraitVoidTouched",
+   "name": "Void Touched",
+   "cat": "traits",
+   "color": "#FF5263",
+   "flat": true
+  },
+  {
+   "id": "CatalystBinding",
+   "name": "Binding Catalyst",
+   "cat": "crafting",
+   "color": "#69E78D",
+   "flat": true
+  },
+  {
+   "id": "CatalystPrismatic",
+   "name": "Prismatic Catalyst",
+   "cat": "crafting",
+   "color": "#FFAB52",
+   "flat": true
+  },
+  {
+   "id": "CatalystResonant",
+   "name": "Resonant Catalyst",
+   "cat": "crafting",
+   "color": "#529BFF",
+   "flat": true
+  },
+  {
+   "id": "MaterialEvolutionCore",
+   "name": "Evolution Core",
+   "cat": "crafting",
+   "color": "#58F898",
+   "flat": true
+  },
+  {
+   "id": "RelicAwakeningStone",
+   "name": "Awakening Stone",
+   "cat": "crafting",
+   "color": "#FFC752",
+   "flat": true
+  },
+  {
+   "id": "SolventCleansing",
+   "name": "Cleansing Solvent",
+   "cat": "crafting",
+   "color": "#65D4EC",
+   "flat": true
+  }
+ ],
+ "total": 85
+}

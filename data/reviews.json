@@ -1,0 +1,5 @@
+{
+  "_howto": "Скрін кинути в assets/work/reviews/, потім дописати запис сюди. src обовʼязковий; name, work, date, quote — необовʼязкові, порожні просто не показуються.",
+  "_example": {"src":"vouch01.png","name":"someuser","work":"Icon set · 12 icons","date":"Aug 2026","quote":"Коротка цитата з того ж скріна."},
+  "items": []
+}
