@@ -72,17 +72,17 @@ function orderFor(key, n) {
 }
 const artCache = new Map();
 const loadArt = (id, v) => {
-  const k = `${id}_${v}`;
+  const s = SETS[SET], k = `${s.dir}/${id}_${v}`;
   if (!artCache.has(k)) artCache.set(k, new Promise(res => {
     const im = new Image();
     im.onload = () => res(im);
-    im.src = `assets/icons/${k}.png?v=${BUILD()}`;
+    im.src = `${k}.png?v=${BUILD()}`;
   }));
   return artCache.get(k);
 };
 /* the file on disk is that icon's own tiles, shuffled — put them back */
 function paint(cv, id, v) {
-  const T = TILES, order = orderFor(id, T.grid * T.grid);
+  const T = TILES, order = orderFor(SETS[SET].pre + id, T.grid * T.grid);
   cv.width = cv.height = T.size;
   return loadArt(id, v).then(im => {
     const g = cv.getContext('2d');
@@ -98,7 +98,7 @@ function paint(cv, id, v) {
 /* the enlarged view carries a baked grid of marks — part of the pixels, not a removable node */
 function paintStage(cv, id, v) {
   const T = TILES, PAD = 44, SIDE = T.size + PAD * 2;
-  const order = orderFor(id, T.grid * T.grid);
+  const order = orderFor(SETS[SET].pre + id, T.grid * T.grid);
   cv.width = cv.height = SIDE;
   const g = cv.getContext('2d');
   return loadArt(id, v).then(im => {
@@ -224,10 +224,57 @@ function home(icons) {
 }
 
 /* ---------- icons page ---------- */
-let DATA = null, variant = 'Outlined', cat = 'all', query = '', shown = [], cursor = 0;
+const SETS = {
+  a: { dir: 'assets/icons',  data: 'data/icons.json',  pre: '',    variants: ['Outlined', 'Flat'],
+       label: 'Game UI',   note: 'Chunky banded set built for game HUDs' },
+  b: { dir: 'assets/icons2', data: 'data/icons2.json', pre: 's2:', variants: ['Line', 'Plate'],
+       label: 'Interface', note: 'Monoline system set for product UI' }
+};
+let SET = 'a', DATA = null, variant = 'Outlined', cat = 'all', query = '', shown = [], cursor = 0;
+const CACHE = {};
+
+function buildSetSwitch() {
+  const box = $('#sets');
+  if (!box) return;
+  box.textContent = '';
+  Object.entries(SETS).forEach(([id, s]) => {
+    const b = el('button', 'setbtn' + (id === SET ? ' on' : ''));
+    b.innerHTML = `<b>${s.label}</b><i>${s.note}</i>`;
+    b.onclick = () => { if (id !== SET) loadSet(id); };
+    box.appendChild(b);
+  });
+}
+
+function buildVariants() {
+  const seg = $('.seg');
+  seg.textContent = '';
+  SETS[SET].variants.forEach((v, i) => {
+    const b = el('button', i === 0 ? 'on' : '');
+    b.textContent = v; b.dataset.v = v;
+    b.onclick = () => {
+      [...seg.children].forEach(x => x.classList.remove('on'));
+      b.classList.add('on'); variant = v; renderGrid();
+    };
+    seg.appendChild(b);
+  });
+  variant = SETS[SET].variants[0];
+}
+
+function loadSet(id) {
+  SET = id; cat = 'all'; query = '';
+  const q = $('#q'); if (q) q.value = '';
+  const done = d => {
+    DATA = d;
+    buildSetSwitch(); buildVariants(); buildChips(); renderGrid();
+    const c = $('#setcount'); if (c) c.textContent = d.total;
+  };
+  if (CACHE[id]) return done(CACHE[id]);
+  fetch(SETS[id].data, { cache: 'no-cache' }).then(r => r.json()).then(d => { CACHE[id] = d; done(d); });
+}
 
 function buildChips() {
   const box = $('#chips');
+  box.textContent = '';                      // інакше чипи попереднього набору лишаються
   const mk = (id, label, n) => {
     const b = el('button', 'chip' + (id === cat ? ' on' : ''));
     b.innerHTML = `${label}<i>${n}</i>`;
@@ -305,13 +352,9 @@ function openModal(i) {
 }
 
 function iconsPage() {
-  buildChips();
-  renderGrid();
+  CACHE.a = DATA;
+  buildSetSwitch(); buildVariants(); buildChips(); renderGrid();
   $('#q').addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); renderGrid(); });
-  document.querySelectorAll('.seg button').forEach(b => b.onclick = () => {
-    document.querySelectorAll('.seg button').forEach(x => x.classList.remove('on'));
-    b.classList.add('on'); variant = b.dataset.v; renderGrid();
-  });
   const modal = $('#modal');
   const close = () => { modal.classList.remove('open'); document.body.style.overflow = ''; };
   modal.addEventListener('click', e => {

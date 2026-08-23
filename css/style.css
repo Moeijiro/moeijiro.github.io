@@ -510,3 +510,16 @@ button.navcta{cursor:pointer}
 .shotcard{width:auto;max-width:min(900px,100%);background:transparent;border:none}
 #shotimg{max-width:100%;max-height:82vh;width:auto;border-radius:16px;border:1px solid var(--line-2);display:block}
 .shotcard .x{background:rgba(10,13,20,.75);border:1px solid var(--line-2)}
+
+
+/* ---------- перемикач наборів ---------- */
+.sets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:720px;margin-bottom:6px}
+.setbtn{text-align:left;padding:16px 20px;border-radius:16px;border:1px solid var(--line);
+  background:var(--panel);transition:border-color .25s,background .25s,transform .25s var(--ease)}
+.setbtn b{display:block;font-family:"Space Grotesk",sans-serif;font-size:16px;color:var(--ink-2);margin-bottom:4px}
+.setbtn i{font-style:normal;font-size:12.5px;color:var(--ink-3)}
+.setbtn:hover{transform:translateY(-2px);border-color:var(--line-2)}
+.setbtn.on{border-color:var(--gold);background:rgba(242,160,28,.08)}
+.setbtn.on b{color:var(--gold)}
+.setbtn.on i{color:var(--ink-2)}
+@media (max-width:620px){.sets{grid-template-columns:1fr}}
