@@ -1,5 +1,7 @@
 (() => {
 'use strict';
+/* GitHub Pages не вміє X-Frame-Options — не даємо вбудувати сайт у чужу сторінку */
+try { if (top !== self) top.location = self.location; } catch (_) { document.documentElement.style.display = 'none'; }
 const $ = (s, r = document) => r.querySelector(s);
 const el = (t, c) => { const n = document.createElement(t); if (c) n.className = c; return n; };
 
