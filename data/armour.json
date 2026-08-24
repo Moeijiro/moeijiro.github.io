@@ -1,0 +1,22 @@
+{
+  "_howto": "Фото класти в assets/work/armour/. Імена файлів нижче — саме їх чекає сторінка. Найпростіше: python3 tools/add_media.py armour <файл> --set ragbound --piece worn",
+  "pieces": ["Helm", "Cuirass", "Mantle", "Girdle", "Signet", "Greaves", "Sabatons"],
+  "sets": [
+    { "id": "ragbound", "name": "Ragbound", "rarity": "Common", "color": "#F5F5FA",
+      "text": "Sackcloth wound over a dark under-layer, hide straps and rusted salvage. The bandana covers head and face as one piece, so the set needed no rebuild when the mask slot was folded into the helm." },
+    { "id": "tattercoat", "name": "Tattercoat", "rarity": "Common", "color": "#F5F5FA",
+      "text": "Faded crimson over dust blue, splinted wood and dull iron. The other half of the starting tier — same budget, opposite palette, so two players in Common gear never read as the same character." },
+    { "id": "forgeborn", "name": "Forgeborn", "rarity": "Uncommon", "color": "#48D670",
+      "text": "Dark iron and deep gold: a faceted sallet with a swept tail, a crest, and the full faceplate. This is the reference set — every later set is measured against its proportions." },
+    { "id": "bonewrought", "name": "Bonewrought", "rarity": "Rare", "color": "#4191FF",
+      "text": "Bone, horn and hide on near-black, with green light in the eye sockets. A horned crown over a skull face: brow, sockets, nasal and nine teeth. The two shoulders are different pieces — a beast skull on the right, scutes on the left." },
+    { "id": "hoarfrost", "name": "Hoarfrost", "rarity": "Rare", "color": "#4191FF",
+      "text": "Frozen steel, clear ice and rime. Icicle growth breaks the silhouette at the shoulders and shins without adding weight to the mesh." },
+    { "id": "abyssclad", "name": "Abyssclad", "rarity": "Epic", "color": "#B056FF",
+      "text": "Drowned bronze and verdigris. The helm is one sealed bell with three glazed ports for a face — a solid of revolution from the chin line to above the crown, so it claims its volume from every angle, not just from the front. Coral and barnacles grow from a per-piece seed." },
+    { "id": "riftsworn", "name": "Riftsworn", "rarity": "Legendary", "color": "#FF9A2D",
+      "text": "Near-black violet plate broken into fragments held a finger apart, with rift light standing in every gap. No plate is whole: the gap is a real second shell in glow material behind the break, not a painted line. Some fragments touch nothing at all." },
+    { "id": "dawnbreak", "name": "Dawnbreak", "rarity": "Secret", "color": "#FF3E4A",
+      "text": "White plate, a thread of gold, and more light than metal: six wings of neon behind the shoulders, two rings behind the head touching nothing, and a lens of light where another set would set a stone. The helm is an open frame — the face volume is filled by a band of neon rather than a plate." }
+  ]
+}

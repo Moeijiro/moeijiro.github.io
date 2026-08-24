@@ -560,9 +560,52 @@ function reviewsPage() {
   addEventListener('keydown', e => { if (e.key === 'Escape' && sh.classList.contains('open')) close(); });
 }
 
+/* ---------- armour sets ---------- */
+function armourPage() {
+  const box = $('#armour'), dir = 'assets/work/armour/';
+  const probe = (src, onOk) => { const im = new Image();
+    im.onload = () => onOk(im.src); im.src = src; };
+  fetch('data/armour.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    d.sets.forEach(set => {                        // порядок фіксований, фото приїжджають потім
+      const card = el('article', 'aset reveal');
+      card.style.setProperty('--c', set.color);
+      card.innerHTML = `
+        <div class="aworn" data-worn>
+          <div class="ahold"><span>${esc(set.name)}</span><i>worn shot pending</i></div>
+        </div>
+        <div class="abody">
+          <div class="ahead"><h3>${esc(set.name)}</h3><em class="arar">${esc(set.rarity)}</em></div>
+          <p>${esc(set.text)}</p>
+          <div class="apieces">
+            ${d.pieces.map(p => `<figure class="apiece" data-piece="${p.toLowerCase()}">
+              <span class="apend"></span><figcaption>${esc(p)}</figcaption></figure>`).join('')}
+          </div>
+        </div>`;
+      box.appendChild(card); watch(card);
+
+      probe(`${dir}${set.id}-worn.jpg`, src => {
+        const slot = card.querySelector('[data-worn]');
+        slot.innerHTML = `<img src="${src}" alt="${esc(set.name)} armour worn" draggable="false">`;
+        guard(slot);
+      });
+      d.pieces.forEach(p => {
+        const key = p.toLowerCase();
+        probe(`${dir}${set.id}-${key}.jpg`, src => {
+          const fig = card.querySelector(`[data-piece="${key}"] .apend`);
+          if (!fig) return;
+          const im = el('img');
+          im.src = src; im.alt = `${set.name} ${p}`; im.draggable = false;
+          fig.replaceWith(im);
+        });
+      });
+    });
+  });
+}
+
 /* ---------- boot ---------- */
 if ($('#sounds')) soundsPage();
 if ($('#vgrid')) reviewsPage();
+if ($('#armour')) armourPage();
 const wg = $('#workgrid');
 if (wg) workPage(wg.dataset.section);
 if ($('#grid') || $('#reel')) {
