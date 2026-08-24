@@ -6,9 +6,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Models — Rojah</title>
-<meta name="description" content="Low-poly game-ready 3D models built in Blender for Roblox.">
+<meta name="description" content="Low-poly game-ready 3D: eight full armour sets across six rarity tiers, plus props and weapons.">
 <meta property="og:title" content="Models — Rojah">
-<meta property="og:description" content="Low-poly game-ready 3D models built in Blender for Roblox.">
+<meta property="og:description" content="Low-poly game-ready 3D: eight full armour sets across six rarity tiers, plus props and weapons.">
 <meta property="og:image" content="assets/og.png">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@
 <nav class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="index.html"><span class="mk"><img src="assets/brand-sm.png" alt="" draggable="false"></span> Rojah</a>
-    <div class="navlinks"><a href="index.html">Home</a><a href="icons.html">Icons</a><a href="vfx.html">VFX</a><a href="models.html" class=on>Models</a><a href="scripting.html">Scripting</a><a href="sounds.html">Sound</a><a href="armour.html">Armour</a><a href="reviews.html">Reviews</a></div>
+    <div class="navlinks"><a href="index.html">Home</a><a href="icons.html">Icons</a><a href="vfx.html">VFX</a><a href="models.html" class=on>Models</a><a href="scripting.html">Scripting</a><a href="sounds.html">Sound</a><a href="reviews.html">Reviews</a></div>
     <button class="navcta dsc" data-copy="mojiro_31" data-tip="Add me on Discord — mojiro_31"
       aria-label="Add me on Discord, opens instructions"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.3 4.9A19 19 0 0 0 15.6 3.4l-.2.4a17.6 17.6 0 0 0-6.7 0l-.3-.4A19 19 0 0 0 3.7 4.9C1 9 .3 13 .6 17a19.2 19.2 0 0 0 5.8 2.9l1.2-1.9a12.4 12.4 0 0 1-1.9-.9l.5-.4a13.7 13.7 0 0 0 11.7 0l.5.4a12.4 12.4 0 0 1-2 .9l1.3 1.9a19.1 19.1 0 0 0 5.8-2.9c.4-4.7-.7-8.6-3.2-12.1ZM8.3 14.6c-1.1 0-2.1-1-2.1-2.3s.9-2.3 2.1-2.3c1.2 0 2.1 1 2.1 2.3s-.9 2.3-2.1 2.3Zm7.4 0c-1.2 0-2.1-1-2.1-2.3s.9-2.3 2.1-2.3 2.1 1 2.1 2.3-.9 2.3-2.1 2.3Z"/></svg></button>
   </div>
@@ -33,13 +33,54 @@
   <div class="wrap">
     <div class="eyebrow">3D assets</div>
     <h1>Models</h1>
-    <p class="lede">Low-poly game-ready meshes: clean topology, sane UVs, and silhouettes that still read from across the map. Modelled to a budget, not to a render.</p>
-    <div class="pills"><span>Blender</span><span>Game-ready topology</span><span>Baked maps</span><span>Roblox-ready</span></div>
+    <p class="lede">Low-poly, game-ready meshes: clean topology, sane UVs, and silhouettes that still
+      read from across the map. Modelled to a budget, not to a render. The bulk of it is armour —
+      eight complete sets built to one measured rig.</p>
+    <div class="pills">
+      <span><b>8</b> armour sets</span><span><b>56</b> models</span><span>Six rarity tiers</span>
+      <span>Blender → engine</span>
+    </div>
   </div>
 </header>
 
 <section style="padding-top:34px">
   <div class="wrap">
+    <div class="sechead reveal">
+      <div class="eyebrow">Armour</div>
+      <h2>Eight sets, seven pieces each</h2>
+      <p>Every set covers eight slots with seven models — helm, cuirass, mantle, girdle, signet,
+        greaves, sabatons — and the cuirass alone rides five separate mounts so the pauldrons turn
+        with the arms instead of floating off the shoulders.</p>
+    </div>
+    <div class="armour" id="armour"></div>
+  </div>
+</section>
+
+<section style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="eyebrow">The rules</div>
+      <h2>What holds eight sets together</h2>
+      <p>A set is not a look, it is a contract with the body underneath it. These four are what let a
+        Common bandana and a Legendary broken-plate helm sit on the same character without either one
+        cutting the jaw.</p>
+    </div>
+    <div class="rules reveal" style="grid-template-columns:repeat(4,1fr)">
+      <div class="rule"><u>Fit</u><b>Measured, not eyeballed</b><span>Clearance is raycast against the real reference mesh, per limb. A ray that misses returns a floor value — too low a floor drops the piece inside whatever is below it.</span></div>
+      <div class="rule"><u>Face</u><b>The helm owns the head</b><span>One model covers head and face. An open face is allowed but has to be a decision: a band of light, a nemes frame, or glazed ports — never an oversight.</span></div>
+      <div class="rule"><u>Material</u><b>One object per material</b><span>The importer makes one mesh part per object, not per material. A six-material mesh exported whole arrives grey and the entire palette is silently lost.</span></div>
+      <div class="rule"><u>Tiers</u><b>Rarity carries no stats</b><span>Moving a set between tiers means editing the rarity and remapping its health band together, or an Uncommon set quietly outclasses every Legendary.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="eyebrow">Other work</div>
+      <h2>Props and weapons</h2>
+      <p>Everything that is not armour: weapons, station props and world pieces.</p>
+    </div>
     <div class="workgrid" id="workgrid" data-section="models"></div>
     <div class="blank" id="workempty" hidden>
       <div class="blankmark"></div>
@@ -74,7 +115,6 @@
         <a href="models.html">Models</a>
         <a href="scripting.html">Scripting</a>
         <a href="sounds.html">Sound</a>
-        <a href="armour.html">Armour</a>
         <a href="reviews.html">Reviews</a>
         <a href="terms.html">Terms &amp; use</a>
       </span>
