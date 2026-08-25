@@ -1,0 +1,60 @@
+{
+  "_howto": "Кадри класти в assets/work/weapons/ як <tier>-sheet.jpg. Найпростіше: python3 tools/add_media.py weapons <файл> --tier common. Порядок items = порядок зброї в кадрі, зліва направо.",
+  "intro": "Thirty weapons on one grip contract: five families — blade, greatblade, spear, maul, bludgeon — across six rarity tiers.",
+  "tiers": [
+    { "id": "common", "name": "Common", "color": "#F5F5FA",
+      "text": "Plain iron, ash and rope. Nothing on a Common weapon glows and nothing trails it — the tier is deliberately mute, so that the first weapon a player replaces feels replaced.",
+      "items": [
+        { "name": "Rusted Iron Sword", "style": "Blade" },
+        { "name": "Training Sword", "style": "Blade" },
+        { "name": "Soldier Spear", "style": "Spear" },
+        { "name": "Iron Mace", "style": "Bludgeon" },
+        { "name": "Wooden Club", "style": "Bludgeon" }
+      ] },
+    { "id": "uncommon", "name": "Uncommon", "color": "#48D670",
+      "text": "Bronze, crystal and a first swing trail. The silhouettes get their own shapes here — a knuckle bow, a grown crystal head, a broad axe bit — while the material budget stays where it was.",
+      "items": [
+        { "name": "Crescent Blade", "style": "Blade" },
+        { "name": "Knight Longsword", "style": "Blade" },
+        { "name": "Crystal Spear", "style": "Spear" },
+        { "name": "Heavy Battle Axe", "style": "Maul" },
+        { "name": "Reinforced Mace", "style": "Bludgeon" }
+      ] },
+    { "id": "rare", "name": "Rare", "color": "#4191FF",
+      "text": "The first lit tier: a live core inside the blade, particles off it, and a point light that actually spills onto the wall. Every colour here is read from the weapon's own glow parts, so a repaint carries the effects with it.",
+      "items": [
+        { "name": "Flame Sword", "style": "Blade" },
+        { "name": "Frost Sword", "style": "Blade" },
+        { "name": "Emerald Greatsword", "style": "Greatblade" },
+        { "name": "Moon Halberd", "style": "Spear" },
+        { "name": "Thunder Axe", "style": "Maul" }
+      ] },
+    { "id": "epic", "name": "Epic", "color": "#B056FF",
+      "text": "Two-handed weight arrives — claymores, a scythe, a cavalry pike — and the tip starts throwing sparks of its own. Fracture and void are modelled, not painted: the shards stand off the blade with real gaps.",
+      "items": [
+        { "name": "Infernal Claymore", "style": "Greatblade" },
+        { "name": "Void Greatsword", "style": "Greatblade" },
+        { "name": "Frozen Scythe", "style": "Spear" },
+        { "name": "Storm Pike", "style": "Spear" },
+        { "name": "Divine Hammer", "style": "Maul" }
+      ] },
+    { "id": "legendary", "name": "Legendary", "color": "#FF9A2D",
+      "text": "Themed sockets wake up at this tier: embers on the fang, stars along the katana, tide off the trident prongs. Each one is an anchored point on the mesh, so the effect keeps its place through every swing.",
+      "items": [
+        { "name": "Celestial Katana", "style": "Blade" },
+        { "name": "Phoenix Blade", "style": "Blade" },
+        { "name": "Dragon Fang Greatsword", "style": "Greatblade" },
+        { "name": "Leviathan Trident", "style": "Spear" }
+      ] },
+    { "id": "secret", "name": "Secret", "color": "#FF3E4A",
+      "text": "The top of the ladder, and the only tier that gets to break its own silhouette: haloes, orbiting glyph rings, debris held off the head. Six weapons, one per family plus a second blade, all of them lighting the room they stand in.",
+      "items": [
+        { "name": "Eclipse Blade", "style": "Blade" },
+        { "name": "Sword of Creation", "style": "Blade" },
+        { "name": "Chaos Destroyer", "style": "Greatblade" },
+        { "name": "Eternal Spear", "style": "Spear" },
+        { "name": "Worldbreaker Hammer", "style": "Maul" },
+        { "name": "God's Judgement Mace", "style": "Bludgeon" }
+      ] }
+  ]
+}

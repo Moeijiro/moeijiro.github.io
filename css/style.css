@@ -10,6 +10,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:94px}
+html:has(.subnav){scroll-padding-top:142px}   /* під шапкою ще й підменю розділів */
 body{
   background:var(--bg);color:var(--ink);
   font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
@@ -602,3 +603,30 @@ button.navcta{cursor:pointer}
   .ahead h3{font-size:23px}
   .azoom{opacity:1;transform:none}
 }
+
+/* ---------- підменю розділів на сторінці ---------- */
+.subnav{position:sticky;top:74px;z-index:40;background:rgba(8,10,15,.86);backdrop-filter:blur(10px);
+  border-block:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{position:relative;flex:none;display:flex;align-items:baseline;gap:8px;
+  padding:14px 16px;font-size:14px;font-weight:600;color:var(--ink-3);white-space:nowrap;
+  transition:color .25s}
+.subnav a i{font-style:normal;font-size:11.5px;font-weight:500;color:var(--ink-3);opacity:.75}
+.subnav a::after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:2px;
+  background:var(--gold);border-radius:2px;transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease)}
+.subnav a:hover{color:var(--ink-2)}
+.subnav a.on{color:var(--ink)}
+.subnav a.on i{color:var(--gold);opacity:1}
+.subnav a.on::after{transform:scaleX(1)}
+@media (max-width:620px){
+  .subnav{top:0}
+  .subnav a{padding:12px 12px;font-size:13px}
+  .subnav a i{display:none}
+}
+
+/* стиль зброї всередині чипа з назвою */
+.apieces span i{font-style:normal;margin-left:7px;font-size:10.5px;font-weight:500;
+  color:var(--ink-3);opacity:.7;letter-spacing:.04em;text-transform:uppercase}
+.aset:hover .apieces span i{opacity:.9}

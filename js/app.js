@@ -529,17 +529,20 @@ function workPage(section) {
 }
 
 /* ---------- image lightbox (reviews + armour sheets) ---------- */
+let _openShot = null;
 function shotbox() {
+  if (_openShot) return _openShot;
   const sh = $('#shot');
   if (!sh) return () => {};
   const img = $('#shotimg');
   const close = () => { sh.classList.remove('open'); document.body.style.overflow = ''; img.src = ''; };
   sh.addEventListener('click', e => { if (e.target.closest('[data-shotclose]')) close(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && sh.classList.contains('open')) close(); });
-  return (src, alt) => {
+  _openShot = (src, alt) => {
     img.src = src; img.alt = alt || '';
     sh.classList.add('open'); document.body.style.overflow = 'hidden';
   };
+  return _openShot;
 }
 
 /* ---------- reviews ---------- */
@@ -635,10 +638,75 @@ function armourPage() {
   });
 }
 
+/* ---------- weapons: один кадр на тир ---------- */
+function weaponsPage() {
+  const box = $('#weapons-grid'), dir = 'assets/work/weapons/';
+  const openShot = shotbox();
+  fetch('data/weapons.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    (d.tiers || []).forEach((tier, i) => {
+      const items = tier.items || [];
+      const num = String(i + 1).padStart(2, '0');
+      const alt = `${tier.name} tier — ${items.length} weapons on the podium, each with its name plate`;
+      const card = el('article', 'aset reveal');
+      card.style.setProperty('--c', tier.color);
+      card.innerHTML = `
+        <button class="asheet" type="button" disabled
+                aria-label="Open the ${esc(tier.name)} weapon frame at full size">
+          <span class="ahold"><span>${esc(tier.name)}</span><i>frame pending</i></span>
+          <span class="anum">${num}</span>
+          <span class="azoom">${ZOOM_ICON}</span>
+        </button>
+        <div class="abody">
+          <div class="ahead"><h3>${esc(tier.name)}</h3>
+            <em class="arar">${items.length} weapon${items.length > 1 ? 's' : ''}</em></div>
+          <p>${esc(tier.text)}</p>
+          <div class="apieces">${items.map(it =>
+            `<span>${esc(it.name)}${it.style ? `<i>${esc(it.style)}</i>` : ''}</span>`).join('')}</div>
+          <div class="anote">Left to right, in the same order as the frame</div>
+        </div>`;
+      box.appendChild(card); watch(card);
+
+      const slot = card.querySelector('.asheet'), src = `${dir}${tier.id}-sheet.jpg`;
+      const im = new Image();
+      im.onload = () => {
+        im.alt = alt; im.draggable = false;
+        // кадр подіуму скомпонований у Studio під самі краї, тому картка бере
+        // пропорцію знімка, а не ріже його під 16:8
+        slot.style.aspectRatio = `${im.naturalWidth} / ${im.naturalHeight}`;
+        slot.querySelector('.ahold').remove();
+        slot.insertBefore(im, slot.firstChild);
+        slot.disabled = false;
+        slot.onclick = () => openShot(src, alt);
+        card.classList.add('has-sheet');
+        guard(card);
+      };
+      im.src = src;
+    });
+  });
+}
+
+/* ---------- підменю розділів: підсвічуємо той, що на екрані ---------- */
+function subnav() {
+  const bar = $('#subnav');
+  const links = [...bar.querySelectorAll('a')];
+  const targets = links.map(a => document.getElementById(a.getAttribute('href').slice(1)))
+                       .filter(Boolean);
+  if (!targets.length) return;
+  const mark = id => links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + id));
+  const io2 = new IntersectionObserver(entries => {
+    const seen = entries.filter(e => e.isIntersecting)
+                        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+    if (seen) mark(seen.target.id);
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  targets.forEach(t => io2.observe(t));
+}
+
 /* ---------- boot ---------- */
 if ($('#sounds')) soundsPage();
 if ($('#vgrid')) reviewsPage();
 if ($('#armour')) armourPage();
+if ($('#weapons-grid')) weaponsPage();
+if ($('#subnav')) subnav();
 const wg = $('#workgrid');
 if (wg) workPage(wg.dataset.section);
 if ($('#grid') || $('#reel')) {

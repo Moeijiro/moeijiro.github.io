@@ -37,13 +37,21 @@
       read from across the map. Modelled to a budget, not to a render. The bulk of it is armour —
       eight complete sets built to one measured rig.</p>
     <div class="pills">
-      <span><b>8</b> armour sets</span><span><b>56</b> models</span><span>Six rarity tiers</span>
-      <span>Blender → engine</span>
+      <span><b>8</b> armour sets</span><span><b>30</b> weapons</span><span><b>86</b> models</span>
+      <span>Six rarity tiers</span><span>Blender → engine</span>
     </div>
   </div>
 </header>
 
-<section style="padding-top:34px">
+<nav class="subnav" id="subnav" aria-label="Sections on this page">
+  <div class="wrap">
+    <a href="#armours" class="on">Armours <i>8 sets</i></a>
+    <a href="#weapons">Weapons <i>30 pieces</i></a>
+    <a href="#props">Props <i>and world</i></a>
+  </div>
+</nav>
+
+<section id="armours" style="padding-top:34px">
   <div class="wrap">
     <div class="sechead reveal">
       <div class="eyebrow">Armour</div>
@@ -58,7 +66,21 @@
   </div>
 </section>
 
-<section style="background:var(--bg-2);border-block:1px solid var(--line)">
+<section id="weapons" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="eyebrow">Weapons</div>
+      <h2>Thirty weapons, six tiers</h2>
+      <p>Five families — blade, greatblade, spear, maul, bludgeon — each with its own grip and
+        stance, all built to one axis so a new weapon drops into the existing animations without a
+        single new clip. One frame per tier, shot on the podium; the labels under each weapon are
+        its real catalogue name and rarity. Chips below read left to right, in frame order.</p>
+    </div>
+    <div class="armour" id="weapons-grid"></div>
+  </div>
+</section>
+
+<section style="border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="sechead reveal">
       <div class="eyebrow">The rules</div>
@@ -76,12 +98,12 @@
   </div>
 </section>
 
-<section>
+<section id="props">
   <div class="wrap">
     <div class="sechead reveal">
       <div class="eyebrow">Other work</div>
-      <h2>Props and weapons</h2>
-      <p>Everything that is not armour: weapons, station props and world pieces.</p>
+      <h2>Props and world</h2>
+      <p>Everything that is neither armour nor a weapon: station props, world pieces and one-offs.</p>
     </div>
     <div class="workgrid" id="workgrid" data-section="models"></div>
     <div class="blank" id="workempty" hidden>
