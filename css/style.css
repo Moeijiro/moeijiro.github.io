@@ -527,7 +527,7 @@ button.navcta{cursor:pointer}
 
 /* ---------- armour sets ---------- */
 .armour{display:flex;flex-direction:column;gap:20px}
-.aset{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:26px;
+.aset{display:grid;grid-template-columns:1fr;gap:20px;
   border:1px solid var(--line);border-left:3px solid var(--c,var(--line-2));
   border-radius:20px;background:var(--panel);padding:22px;transition:border-color .3s,transform .3s var(--ease)}
 .aset:hover{transform:translateY(-3px);border-color:var(--line-2);border-left-color:var(--c)}
@@ -553,3 +553,11 @@ button.navcta{cursor:pointer}
   .aworn{aspect-ratio:16/10;max-height:320px}
   .apieces{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
+
+/* один широкий кадр на сет */
+.asheet{border-radius:14px;overflow:hidden;background:#0A0D14;aspect-ratio:16/8;
+  display:grid;place-items:center;border:1px solid var(--line)}
+.asheet img{width:100%;height:100%;object-fit:cover;display:block}
+.apieces{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.apieces span{font-size:11.5px;font-weight:600;color:var(--ink-3);border:1px solid var(--line);
+  border-radius:999px;padding:5px 12px}
