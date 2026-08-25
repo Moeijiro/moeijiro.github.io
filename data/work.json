@@ -1,6 +1,114 @@
 {
  "_howto": "Add entries below. type: video | image | code. Put files in assets/work/<section>/. For video give src (mp4/webm) and poster (jpg/png). For code give lang + code (use \\n for line breaks).",
  "vfx": [],
- "models": [],
- "scripting": []
+ "models": [
+  {
+   "type": "image",
+   "src": "monument.jpg",
+   "tag": "Landmark",
+   "title": "Winged monument",
+   "text": "Paired feathered wings over a fluted column, gold banding and lit panels around the base. Built as a landmark rather than a prop — it has to read from across the hub, not up close.",
+   "meta": [
+    "Landmark",
+    "Neon panels"
+   ]
+  },
+  {
+   "type": "image",
+   "src": "dummy.jpg",
+   "tag": "Prop",
+   "title": "Training dummy",
+   "text": "A padded post with a target roundel and frost spikes on a weighted base. It stands in the training ground and has to survive being hit from any angle, so it reads the same from all sides.",
+   "meta": [
+    "Prop",
+    "Training ground"
+   ]
+  }
+ ],
+ "scripting": [],
+ "characters": [
+  {
+   "type": "image",
+   "src": "blacksmith.jpg",
+   "tag": "NPC",
+   "title": "Blacksmith",
+   "text": "The forge keeper: leather apron over rolled sleeves, one shoulder plated, one bare. Built on the standard rig, so every animation the player characters use works on him unchanged.",
+   "meta": [
+    "Rigged",
+    "Low-poly",
+    "Hand-painted"
+   ]
+  },
+  {
+   "type": "image",
+   "src": "wizard.jpg",
+   "tag": "NPC",
+   "title": "Wizard",
+   "text": "Robe, pointed hat and a crystal staff, with an orb resting in the open hand and a rune ring turning at his feet. The staff head and the ring are the only lit materials on him — everything else is flat colour.",
+   "meta": [
+    "Rigged",
+    "Glow parts",
+    "Idle loop"
+   ]
+  }
+ ],
+ "world": [
+  {
+   "type": "image",
+   "src": "map.jpg",
+   "tag": "World",
+   "title": "The map",
+   "text": "Everything above the water in one frame: a central hub with three themed islands hung off it, each on its own bridge. Nothing is procedural — the layout is placed by hand so the sightlines from the hub centre land on every landmark.",
+   "meta": [
+    "Four islands",
+    "Bridged",
+    "One plane"
+   ],
+   "wide": true
+  },
+  {
+   "type": "image",
+   "src": "hub.jpg",
+   "tag": "Island",
+   "title": "Central hub",
+   "text": "Radial paving that reads as a compass from the air: every path from the rim lands on the ring at the centre, and the four bridge heads sit on the axes.",
+   "meta": [
+    "Hub",
+    "Radial layout"
+   ]
+  },
+  {
+   "type": "image",
+   "src": "portal.jpg",
+   "tag": "Island",
+   "title": "Portal island",
+   "text": "Deep blue slate, standing stones and a lit vortex on the platform. The blue channel of the bridge carries the same palette across so the island reads before you arrive.",
+   "meta": [
+    "Portal",
+    "Themed bridge"
+   ]
+  },
+  {
+   "type": "image",
+   "src": "magma.jpg",
+   "tag": "Island",
+   "title": "Magma island",
+   "text": "Basalt terraces with lava channels cut into them, braziers on the rim and broken rock floating under the underside. The hottest colour on the map, kept to one island on purpose.",
+   "meta": [
+    "Lava",
+    "Floating debris"
+   ]
+  },
+  {
+   "type": "image",
+   "src": "worldtree.jpg",
+   "tag": "Island",
+   "title": "Worldtree island",
+   "text": "One tree carries the whole silhouette: the island underneath is deliberately small and plain so the canopy is what you see from the hub.",
+   "meta": [
+    "Landmark",
+    "Single silhouette"
+   ]
+  }
+ ]
 }

@@ -630,3 +630,7 @@ button.navcta{cursor:pointer}
 .apieces span i{font-style:normal;margin-left:7px;font-size:10.5px;font-weight:500;
   color:var(--ink-3);opacity:.7;letter-spacing:.04em;text-transform:uppercase}
 .aset:hover .apieces span i{opacity:.9}
+
+/* картка на всю ширину сітки — оглядовий кадр розділу */
+.wk.wide{grid-column:1/-1}
+.wk .wkmedia{cursor:zoom-in}

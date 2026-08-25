@@ -491,13 +491,15 @@ function lua(code) {                                   // tiny Luau highlighter
     .replace(/\b(\d+(?:\.\d+)?)\b/g, '<i class="n">$1</i>');
 }
 
-function workPage(section) {
-  const box = $('#workgrid'), blank = $('#workempty');
+function workPage(box) {
+  const section = box.dataset.section;
+  const blank = box.dataset.empty ? document.getElementById(box.dataset.empty) : null;
+  const openShot = shotbox();
   fetch('data/work.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
     const items = (d[section] || []).filter(Boolean);
-    if (!items.length) { blank.hidden = false; return; }
+    if (!items.length) { if (blank) blank.hidden = false; return; }
     items.forEach(it => {
-      const c = el('article', 'wk reveal');
+      const c = el('article', 'wk reveal' + (it.wide ? ' wide' : ''));
       let media = '';
       if (it.type === 'video') {
         media = `<div class="wkmedia"><video src="assets/work/${section}/${safeFile(it.src)}"
@@ -516,6 +518,15 @@ function workPage(section) {
         ${(it.meta || []).length ? `<div class="wkmeta">${it.meta.map(m => `<span>${esc(m)}</span>`).join('')}</div>` : ''}
       </div>`;
       box.appendChild(c); guard(c); watch(c);
+      const pic = c.querySelector('.wkmedia img');
+      if (pic) {
+        // кадри зняті в Studio під власний формат - картка бере пропорцію знімка
+        const fit = () => { c.querySelector('.wkmedia').style.aspectRatio =
+          `${pic.naturalWidth} / ${pic.naturalHeight}`; };
+        pic.complete ? fit() : pic.addEventListener('load', fit);
+        c.querySelector('.wkmedia').onclick =
+          () => openShot(pic.getAttribute('src'), pic.alt || it.title || '');
+      }
       const v = c.querySelector('video');
       if (v) {
         const btn = c.querySelector('.wkplay');
@@ -707,8 +718,7 @@ if ($('#vgrid')) reviewsPage();
 if ($('#armour')) armourPage();
 if ($('#weapons-grid')) weaponsPage();
 if ($('#subnav')) subnav();
-const wg = $('#workgrid');
-if (wg) workPage(wg.dataset.section);
+document.querySelectorAll('.workgrid').forEach(workPage);
 if ($('#grid') || $('#reel')) {
   fetch('data/icons.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
     DATA = d;

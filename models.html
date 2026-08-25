@@ -47,7 +47,9 @@
   <div class="wrap">
     <a href="#armours" class="on">Armours <i>8 sets</i></a>
     <a href="#weapons">Weapons <i>30 pieces</i></a>
-    <a href="#props">Props <i>and world</i></a>
+    <a href="#characters">Characters <i>NPCs</i></a>
+    <a href="#world">World <i>the map</i></a>
+    <a href="#props">Props <i>and one-offs</i></a>
   </div>
 </nav>
 
@@ -66,21 +68,7 @@
   </div>
 </section>
 
-<section id="weapons" style="background:var(--bg-2);border-block:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sechead reveal">
-      <div class="eyebrow">Weapons</div>
-      <h2>Thirty weapons, six tiers</h2>
-      <p>Five families — blade, greatblade, spear, maul, bludgeon — each with its own grip and
-        stance, all built to one axis so a new weapon drops into the existing animations without a
-        single new clip. One frame per tier, shot on the podium; the labels under each weapon are
-        its real catalogue name and rarity. Chips below read left to right, in frame order.</p>
-    </div>
-    <div class="armour" id="weapons-grid"></div>
-  </div>
-</section>
-
-<section style="border-bottom:1px solid var(--line)">
+<section style="background:var(--bg-2);border-block:1px solid var(--line)">
   <div class="wrap">
     <div class="sechead reveal">
       <div class="eyebrow">The rules</div>
@@ -98,14 +86,65 @@
   </div>
 </section>
 
+<section id="weapons">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="eyebrow">Weapons</div>
+      <h2>Thirty weapons, six tiers</h2>
+      <p>Five families — blade, greatblade, spear, maul, bludgeon — each with its own grip and
+        stance, all built to one axis so a new weapon drops into the existing animations without a
+        single new clip. One frame per tier, shot on the podium; the labels under each weapon are
+        its real catalogue name and rarity. Chips below read left to right, in frame order.</p>
+    </div>
+    <div class="armour" id="weapons-grid"></div>
+  </div>
+</section>
+
+<section id="characters" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="eyebrow">Characters</div>
+      <h2>NPCs</h2>
+      <p>Shopkeepers and station keepers, built on the same rig as the player characters so every
+        idle, turn and gesture already fits them. Silhouette first: a hat, a pauldron, an apron —
+        one shape each that survives being seen from across a room.</p>
+    </div>
+    <div class="workgrid" id="charactergrid" data-section="characters" data-empty="charactersempty"></div>
+    <div class="blank" id="charactersempty" hidden>
+      <div class="blankmark"></div>
+      <b>Characters are on the way.</b>
+      <span>New NPCs are added here as they are finished.</span>
+    </div>
+  </div>
+</section>
+
+<section id="world" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="eyebrow">World</div>
+      <h2>The map</h2>
+      <p>A hub island with themed islands hung off it on bridges, all on one plane and all placed by
+        hand. Each island gets one idea and one palette — a tree, a portal, a lava field — so it can
+        be told apart from the hub at a glance, and the bridge to it carries the same colour.</p>
+    </div>
+    <div class="workgrid" id="worldgrid" data-section="world" data-empty="worldempty"></div>
+    <div class="blank" id="worldempty" hidden>
+      <div class="blankmark"></div>
+      <b>Map shots are on the way.</b>
+      <span>Islands are added here as they are finished.</span>
+    </div>
+  </div>
+</section>
+
 <section id="props">
   <div class="wrap">
     <div class="sechead reveal">
       <div class="eyebrow">Other work</div>
-      <h2>Props and world</h2>
-      <p>Everything that is neither armour nor a weapon: station props, world pieces and one-offs.</p>
+      <h2>Props and one-offs</h2>
+      <p>Everything that is neither armour, weapon nor terrain: landmarks, station props and the
+        odd single object built for one job.</p>
     </div>
-    <div class="workgrid" id="workgrid" data-section="models"></div>
+    <div class="workgrid" id="workgrid" data-section="models" data-empty="workempty"></div>
     <div class="blank" id="workempty" hidden>
       <div class="blankmark"></div>
       <b>Renders are on the way.</b>
