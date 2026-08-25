@@ -528,9 +528,24 @@ function workPage(section) {
   });
 }
 
+/* ---------- image lightbox (reviews + armour sheets) ---------- */
+function shotbox() {
+  const sh = $('#shot');
+  if (!sh) return () => {};
+  const img = $('#shotimg');
+  const close = () => { sh.classList.remove('open'); document.body.style.overflow = ''; img.src = ''; };
+  sh.addEventListener('click', e => { if (e.target.closest('[data-shotclose]')) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && sh.classList.contains('open')) close(); });
+  return (src, alt) => {
+    img.src = src; img.alt = alt || '';
+    sh.classList.add('open'); document.body.style.overflow = 'hidden';
+  };
+}
+
 /* ---------- reviews ---------- */
 function reviewsPage() {
   const box = $('#vgrid'), blank = $('#vempty'), count = $('#vcount');
+  const openShot = shotbox();
   fetch('data/reviews.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
     const items = (d.items || []).filter(i => i && i.src);
     if (count) count.textContent = items.length;
@@ -547,45 +562,75 @@ function reviewsPage() {
             ${it.date ? `<time>${esc(it.date)}</time>` : ''}
           </div></figcaption>` : ''}`;
       box.appendChild(c); watch(c);
-      c.querySelector('.vshot').onclick = () => {
-        $('#shotimg').src = `assets/work/reviews/${safeFile(it.src)}`;
-        $('#shot').classList.add('open');
-        document.body.style.overflow = 'hidden';
-      };
+      c.querySelector('.vshot').onclick =
+        () => openShot(`assets/work/reviews/${safeFile(it.src)}`, 'Review screenshot');
     });
   });
-  const sh = $('#shot');
-  const close = () => { sh.classList.remove('open'); document.body.style.overflow = ''; $('#shotimg').src = ''; };
-  sh.addEventListener('click', e => { if (e.target.closest('[data-shotclose]')) close(); });
-  addEventListener('keydown', e => { if (e.key === 'Escape' && sh.classList.contains('open')) close(); });
 }
 
 /* ---------- armour sets ---------- */
+/* Один широкий кадр на сет, згруповані за рідкістю. Кадру може ще не бути —
+   тоді картка лишається із заглушкою, а кнопка не клікається. */
+const ZOOM_ICON = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true">' +
+  '<path d="M3 7.5V3h4.5M16.5 12v4.5H12M17 7.5V3h-4.5M3.5 12v4.5H8" ' +
+  'stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
 function armourPage() {
   const box = $('#armour'), dir = 'assets/work/armour/';
+  const openShot = shotbox();
   fetch('data/armour.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
-    d.sets.forEach(set => {
-      const card = el('article', 'aset reveal');
-      card.style.setProperty('--c', set.color);
-      card.innerHTML = `
-        <div class="asheet" data-sheet>
-          <div class="ahold"><span>${esc(set.name)}</span><i>sheet pending</i></div>
-        </div>
-        <div class="abody">
-          <div class="ahead"><h3>${esc(set.name)}</h3><em class="arar">${esc(set.rarity)}</em></div>
-          <p>${esc(set.text)}</p>
-          <div class="apieces">${d.pieces.map(p => `<span>${esc(p)}</span>`).join('')}</div>
-        </div>`;
-      box.appendChild(card); watch(card);
-      const im = new Image();
-      im.onload = () => {
-        const slot = card.querySelector('[data-sheet]');
-        slot.innerHTML = '';
-        im.alt = `${set.name} armour set — worn and in pieces`;
-        im.draggable = false;
-        slot.appendChild(im);
-      };
-      im.src = `${dir}${set.id}-sheet.jpg`;
+    const pieces = d.pieces || [], sets = d.sets || [];
+
+    /* сусідні сети однієї рідкості йдуть під один заголовок тиру */
+    const tiers = [];
+    sets.forEach(set => {
+      const last = tiers[tiers.length - 1];
+      if (last && last.rarity === set.rarity) last.items.push(set);
+      else tiers.push({ rarity: set.rarity, color: set.color, items: [set] });
+    });
+
+    let n = 0;
+    tiers.forEach(tier => {
+      const head = el('div', 'atier reveal');
+      head.style.setProperty('--c', tier.color);
+      head.innerHTML = `<span class="atdot"></span><b>${esc(tier.rarity)}</b>` +
+        `<i>${tier.items.length} set${tier.items.length > 1 ? 's' : ''}</i><u></u>`;
+      box.appendChild(head); watch(head);
+
+      tier.items.forEach(set => {
+        n += 1;
+        const num = String(n).padStart(2, '0');
+        const alt = `${set.name} armour set — worn on the mannequin, with all seven pieces beside it`;
+        const card = el('article', 'aset reveal');
+        card.style.setProperty('--c', set.color);
+        card.innerHTML = `
+          <button class="asheet" type="button" disabled
+                  aria-label="Open the ${esc(set.name)} sheet at full size">
+            <span class="ahold"><span>${esc(set.name)}</span><i>sheet pending</i></span>
+            <span class="anum">${num}</span>
+            <span class="azoom">${ZOOM_ICON}</span>
+          </button>
+          <div class="abody">
+            <div class="ahead"><h3>${esc(set.name)}</h3><em class="arar">${esc(set.rarity)}</em></div>
+            <p>${esc(set.text)}</p>
+            <div class="apieces">${pieces.map(p => `<span>${esc(p)}</span>`).join('')}</div>
+            <div class="anote">Worn set and all ${pieces.length} pieces in one frame</div>
+          </div>`;
+        box.appendChild(card); watch(card);
+
+        const slot = card.querySelector('.asheet'), src = `${dir}${set.id}-sheet.jpg`;
+        const im = new Image();
+        im.onload = () => {
+          im.alt = alt; im.draggable = false;
+          slot.querySelector('.ahold').remove();
+          slot.insertBefore(im, slot.firstChild);
+          slot.disabled = false;
+          slot.onclick = () => openShot(src, alt);
+          card.classList.add('has-sheet');
+          guard(card);
+        };
+        im.src = src;
+      });
     });
   });
 }
