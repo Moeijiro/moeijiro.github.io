@@ -633,4 +633,4 @@ button.navcta{cursor:pointer}
 
 /* картка на всю ширину сітки — оглядовий кадр розділу */
 .wk.wide{grid-column:1/-1}
-.wk .wkmedia{cursor:zoom-in}
+.wk .wkmedia:has(img){cursor:zoom-in}   /* відео не збільшується, воно грає */

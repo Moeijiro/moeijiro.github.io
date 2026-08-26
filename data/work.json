@@ -1,6 +1,56 @@
 {
  "_howto": "Add entries below. type: video | image | code. Put files in assets/work/<section>/. For video give src (mp4/webm) and poster (jpg/png). For code give lang + code (use \\n for line breaks).",
- "vfx": [],
+ "vfx": [
+  {
+   "type": "video",
+   "src": "ultimate.mp4",
+   "poster": "ultimate.jpg",
+   "tag": "Ability VFX",
+   "title": "Ultimate and cooldowns",
+   "text": "An ultimate cast read end to end: rings opening on the ground, damage numbers off every target caught in them, and the cooldown draining on the bar in the same frame.",
+   "meta": [
+    "Beams",
+    "Damage numbers",
+    "Cooldown ring"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "lightning.mp4",
+   "poster": "lightning.jpg",
+   "tag": "Ability VFX",
+   "title": "Lightning strike",
+   "text": "A column that lands from above: flash, bolt, and a ring of dust that outlives it by a beat so the hit reads even at a distance.",
+   "meta": [
+    "Beams",
+    "Impact ring"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "solar.mp4",
+   "poster": "solar.jpg",
+   "tag": "Ability VFX",
+   "title": "Solar strike",
+   "text": "Charge, flash, shockwave. The core is a single neon shape carrying the light — everything else around it is particles that fade from the impact point outward.",
+   "meta": [
+    "Neon core",
+    "Particles"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "void.mp4",
+   "poster": "void.jpg",
+   "tag": "Ability VFX",
+   "title": "Void rift",
+   "text": "The cast recolours the whole scene: the sky shifts, the ground goes violet, and the tear itself is layered parts and beams rather than a flat texture.",
+   "meta": [
+    "Scene tint",
+    "Layered parts"
+   ]
+  }
+ ],
  "models": [
   {
    "type": "image",
@@ -25,7 +75,167 @@
    ]
   }
  ],
- "scripting": [],
+ "scripting": [
+  {
+   "type": "video",
+   "src": "dungeon-gen.mp4",
+   "poster": "dungeon-gen.jpg",
+   "tag": "Luau · generation",
+   "title": "Procedural dungeon",
+   "text": "Rooms are drawn per door from a weighted template pool and stitched at run time, so no two runs share a floor plan. The generator owns the layout, the props and the spawns, then hands a finished floor to the gameplay services.",
+   "meta": [
+    "Server-authoritative",
+    "Weighted templates",
+    "No two runs alike"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "boss.mp4",
+   "poster": "boss.jpg",
+   "tag": "Luau · combat",
+   "title": "Boss fight",
+   "text": "Phase timers, telegraphed attacks and a health bar the server owns. The client renders what the server has already decided, and the run ends in the reward window you see at the end of the clip.",
+   "meta": [
+    "Server-authoritative",
+    "Phases",
+    "Loot roll"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "monument.mp4",
+   "poster": "monument.jpg",
+   "tag": "Luau · data",
+   "title": "Live monument",
+   "text": "A world object wired to live player data: the panel is a real view of saved stats, redrawn as they change, not a decorative prop with numbers painted on.",
+   "meta": [
+    "Live data",
+    "World UI"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "leaderboard.mp4",
+   "poster": "leaderboard.jpg",
+   "tag": "Luau · data store",
+   "title": "Leaderboard",
+   "text": "Standings ordered on the server, capped, and written to a board in the world. It refreshes in place — no rejoin, no reload.",
+   "meta": [
+    "Data store",
+    "Ordered server-side"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "upgrade.mp4",
+   "poster": "upgrade.jpg",
+   "tag": "Luau · UI",
+   "title": "Upgrade altar",
+   "text": "A node tree where every node is a real upgrade record. What you can afford lights up, what you cannot stays dim, and the server checks the same table before it grants anything.",
+   "meta": [
+    "Node tree",
+    "Server-validated"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "forge.mp4",
+   "poster": "forge.jpg",
+   "tag": "Luau · UI",
+   "title": "Forge window",
+   "text": "Components on the left, the result previewed live on the right. Every field is driven by the same recipe table the server validates against, so the preview cannot promise something the craft will refuse.",
+   "meta": [
+    "Retained-mode",
+    "Live preview"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "inventory.mp4",
+   "poster": "inventory.jpg",
+   "tag": "Luau · UI",
+   "title": "Inventory",
+   "text": "Tabs for gear and materials over forty dynamic slots, with counts read straight from the saved profile.",
+   "meta": [
+    "Tabbed",
+    "Dynamic slots",
+    "Persisted"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "dungeon-menu.mp4",
+   "poster": "dungeon-menu.jpg",
+   "tag": "Luau · UI",
+   "title": "Dungeon menu",
+   "text": "Pick a floor before you go in: unlock rules, saved progress and the reward line for each one, all read from the same config the generator builds against.",
+   "meta": [
+    "Unlock rules",
+    "Saved progress"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "radial-menu.mp4",
+   "poster": "radial-menu.jpg",
+   "tag": "Luau · UI",
+   "title": "Radial menu",
+   "text": "One ring, six destinations. Keyboard and mouse land on the same handler, so the menu behaves identically whichever you use.",
+   "meta": [
+    "Radial",
+    "One handler"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "admin.mp4",
+   "poster": "admin.jpg",
+   "tag": "Luau · tooling",
+   "title": "Admin panel and levelling",
+   "text": "A gated panel that grants XP, coins and items for testing — sitting on top of the same levelling service a player progresses through, so what it hands out follows the real rules.",
+   "meta": [
+    "Gated",
+    "Same service as players"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "prompts.mp4",
+   "poster": "prompts.jpg",
+   "tag": "Luau · interaction",
+   "title": "Station prompts",
+   "text": "Every station in the world shares one prompt system: proximity, hold-to-use and a per-station accent colour. Adding a station is a table entry, not new code.",
+   "meta": [
+    "One system",
+    "Per-station accent"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "breakables.mp4",
+   "poster": "breakables.jpg",
+   "tag": "Luau · gameplay",
+   "title": "Breakables",
+   "text": "Destructible props that pay out. Hits are resolved on the server, the payout is rolled there too, and each object carries its own respawn timer.",
+   "meta": [
+    "Server-side hits",
+    "Respawn timers"
+   ]
+  },
+  {
+   "type": "video",
+   "src": "loading.mp4",
+   "poster": "loading.jpg",
+   "tag": "Luau · UX",
+   "title": "Loading screen",
+   "text": "It covers the teleport into a floor and owns the whole hand-off — fade, hints, and the moment control comes back — so the player never sees a half-built room.",
+   "meta": [
+    "Teleport cover",
+    "Owns the hand-off"
+   ]
+  }
+ ],
  "characters": [
   {
    "type": "image",
